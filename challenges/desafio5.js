@@ -9,13 +9,15 @@ db.movies.aggregate([
   {
     $match: {
       countries: "USA",
-      "tomatoes.viwer.rating": {
+      "tomatoes.viewer.rating": {
         $gte: 3,
       },
     },
   },
   {
     $project: {
+      title: 1,
+      "tomatoes.viewer.rating": 1,
       cast: 1,
       favMatch: {
         $setIntersection: [
@@ -44,7 +46,7 @@ db.movies.aggregate([
   {
     $sort: {
       num_favs: -1,
-      "tomatoes.viwer.rating": -1,
+      "tomatoes.viewer.rating": -1,
       title: -1,
     },
   },
