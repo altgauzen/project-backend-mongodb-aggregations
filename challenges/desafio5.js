@@ -49,10 +49,10 @@ db.movies.aggregate([
     },
   },
   {
-    $skip: 24,
+    $limit: 25,
   },
   {
-    $limit: 25,
+    $skip: 24,
   },
   {
     $project: {
