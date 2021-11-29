@@ -1,30 +1,25 @@
-/*  const favActTrybe = ["Sandra Bullock", "Tom Hanks",
- "Julia Roberts", "Kevin Spacey", "George Clooney"];
-*/
 db.movies.aggregate([
   {
-    $addFields: {
-      favActTrybe: ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey", "George Clooney"],
-    },
-  },
-  {
     $project: {
+      cast: 1,
       favMatch: {
-        $setIntersection: ["$cast", "$favActTrybe"],
+        $setIntersection: [
+          "$cast",
+          [
+            "Sandra Bullock",
+            "Tom Hanks",
+            "Julia Roberts",
+            "Kevin Spacey",
+            "George Clooney",
+          ],
+        ],
       },
       _id: 0,
     },
   },
   {
-    $match: {
-      countries: "USA",
-      "tomatoes.viwer.rating": { $gte: 3 },
-    },
-  },
-  {
     $project: {
-      _id: null,
-      title: 1,
+      _id: 0,
       num_favs: {
         $cond: {
           if: {
@@ -37,6 +32,24 @@ db.movies.aggregate([
         },
       },
     },
+  },
+  {
+    $match: {
+      countries: "USA",
+      "tomatoes.viwer.rating": { $gte: 3 },
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+    },
+  },
+  {
+    $skip: 24,
+  },
+  {
+    $limit: 1,
   },
   {
     $sort: {
