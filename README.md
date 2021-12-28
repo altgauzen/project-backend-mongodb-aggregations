@@ -1,6 +1,13 @@
-### Termos e acordos
+# project-backend-mongodb-aggregations
 
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
+## Meus Comentários
+
+Este foi um projeto individual feito na Trybe no Módulo de Back-end onde aprendi como fazer uma pipeline utilizando operadores de aggregation no MongoDB.
+Algumas habilidades aprendidas:
+- Executar buscas complexas no banco mongoDB;
+- Usar os operadores de aggregation para fazer uma pipeline.
+
+Aproveitamento: 100% de aprovação pelos avaliadores da Trybe.
 
 ---
 
